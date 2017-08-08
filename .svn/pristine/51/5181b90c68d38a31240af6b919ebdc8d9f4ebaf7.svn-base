@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scg.persistence.UserMissionMapper">
+
+    <select id="getUserMissionList" parameterType="com.scg.model.UserMission" resultType="com.scg.model.UserMission">
+        select *
+        from usermission umi
+        where 1=1
+        <if test="usermissionid != 0">
+            and umi.usermissionid = #{usermissionid}
+        </if>
+        <if test="missionid != 0">
+            and umi.missionid = #{missionid}
+        </if>
+        <if test="uid != 0">
+            and umi.uid = #{uid}
+        </if>
+        <if test="uploadflag != null">
+            and umi.uploadflag = #{uploadflag}
+        </if>
+        <if test="passflag != null">
+            and umi.passflag = #{passflag}
+        </if>
+    </select>
+
+    <select id="getUserMission" parameterType="com.scg.model.UserMission" resultType="com.scg.model.UserMission">
+        select *
+        from usermission umi
+        where 1=1
+        <if test="usermissionid != 0">
+            and umi.usermissionid = #{usermissionid}
+        </if>
+        <if test="missionid != 0">
+            and umi.missionid = #{missionid}
+        </if>
+        <if test="uid != 0">
+            and umi.uid = #{uid}
+        </if>
+        <if test="uploadflag != null">
+            and umi.uploadflag = #{uploadflag}
+        </if>
+        <if test="passflag != null">
+            and umi.passflag = #{passflag}
+        </if>
+        LIMIT 1
+    </select>
+
+    <select id="getUserMissionCount" parameterType="com.scg.model.UserMission" resultType="int">
+        select count(*)
+        from usermission
+        where 1=1
+        <if test="usermissionid != 0">
+            and umi.usermissionid = #{usermissionid}
+        </if>
+        <if test="missionid != 0">
+            and umi.missionid = #{missionid}
+        </if>
+        <if test="uid != 0">
+            and umi.uid = #{uid}
+        </if>
+        <if test="uploadflag != null">
+            and umi.uploadflag = #{uploadflag}
+        </if>
+        <if test="passflag != null">
+            and umi.passflag = #{passflag}
+        </if>
+        LIMIT 1
+    </select>
+
+
+    <insert id="saveUserMission" parameterType="com.scg.model.UserMission">
+        INSERT INTO usermission
+        (
+        missionid,
+        uid,
+        subject,
+        descroption,
+        uploadflag,
+        youtubeaddr,
+        passflag,
+        videoaddr,
+        filename,
+        creationdate,
+        updatedate)
+        VALUES
+        (
+        #{missionid},
+        #{uid},
+        #{subject},
+        #{descroption},
+        #{uploadflag},
+        #{youtubeaddr},
+        #{passflag},
+        #{videoaddr},
+        #{filename},
+        now(),
+        now()
+        );
+        <selectKey keyProperty="usermissionid" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="updateUserMission">
+      update usermission set
+          youtubeaddr=#{param3},
+          updatedate = now()
+      where 1=1
+      and usermissionid =#{param1}
+      and uid = #{param2}
+    </update>
+
+    <insert id="saveUserMissionEval" parameterType="com.scg.model.UserMissionEval">
+        INSERT INTO usermission_eval
+        (
+        evalid,
+        uid,
+        instructorid,
+        coment,
+        score,
+        creationdate
+        )
+        VALUES
+        (
+        #{evalid},
+        #{uid},
+        #{instructorid},
+        #{coment},
+        #{score},
+        now()
+        );
+        <selectKey keyProperty="evalid" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="getUserMissionEvalCount" parameterType="com.scg.model.UserMissionEval" resultType="int">
+        select *
+        from usermission_eval ue
+        where 1=1
+        <if test="uid != 0">
+            and ue.uid = #{uid}
+        </if>
+        <if test="instructorid != 0">
+            and ue.instructorid = #{instructorid}
+        </if>
+        <if test="score != 0">
+            and ue.score = #{score}
+        </if>
+        LIMIT 1
+    </select>
+
+</mapper>

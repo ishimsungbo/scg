@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scg.persistence.UserMapper">
+
+    <insert id="saveUser" parameterType="com.scg.model.User">
+        INSERT INTO user
+        (useremail,
+        username,
+        snsid,
+        snsname,
+        snstype,
+        phone,
+        password,
+        profileimgurl,
+        googleemail,
+        location,
+        apppushflag,
+        teampushflag,
+        teamid,
+        commontokenid,
+        creationdate
+        )
+        VALUES
+        (
+        #{useremail},
+        #{username},
+        #{snsid},
+        #{snsname},
+        #{snstype},
+        #{phone},
+        #{password},
+        #{profileimgurl},
+        #{googleemail},
+        #{location},
+        #{apppushflag},
+        #{teampushflag},
+        #{teamid},
+        #{commontokenid},
+        now()
+        );
+        <selectKey keyProperty="uid" resultType="Integer" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="getUser" resultType="com.scg.model.User" parameterType="com.scg.model.User">
+       select *
+       from user u
+       where 1=1
+        <if test="snstype != null">
+            and u.snstype = #{snstype}
+        </if>
+        <if test="snsid != null">
+            and u.snsid = #{snsid}
+        </if>
+        <if test="password != null">
+            and u.password = #{password}
+        </if>
+        <if test="useremail != null">
+            and u.useremail = #{useremail}
+        </if>
+    </select>
+
+    <select id="getUserCount" parameterType="com.scg.model.User" resultType="int">
+        select count(*)
+        from user ku
+        where 1=1
+        <if test="snstype != null">
+            and ku.snstype = #{snstype}
+        </if>
+        <if test="snsid != null">
+            and ku.snsid = #{snsid}
+        </if>
+        <if test="password != null">
+            and ku.password = #{password}
+        </if>
+        <if test="useremail != null">
+            and ku .useremail = #{useremail}
+        </if>
+    </select>
+
+    <update id="update" parameterType="com.scg.model.User">
+        update user
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="snsid != null">snsid = #{snsid},</if>
+            <if test="snsname != null">snsname = #{snsname},</if>
+            <if test="snstype != null">snstype = #{snstype},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="profileimgurl != null">profileimgurl = #{profileimgurl},</if>
+            <if test="googleemail != null">googleemail = #{googleemail},</if>
+            <if test="location != 0">location = #{location},</if>
+            <if test="teamid != 0">teamid = #{teamid},</if>
+            <if test="apppushflag != null">apppushflag = #{apppushflag},</if>
+            <if test="teampushflag != null">teampushflag = #{teampushflag}</if>
+            <if test="commontokenid !=  0 ">commontokenid = #{commontokenid}</if>
+        </set>
+        where 1=1
+        <if test="uid != 0">
+            and   uid = #{uid}
+        </if>
+        <if test="useremail != null">
+            and   useremail = #{useremail}
+        </if>
+    </update>
+
+
+    <select id="getAcctCount" resultType="int">
+        select count(*)
+        from user
+        where 1=1
+        and snstype=#{param1}
+        and useremail=#{param2}
+    </select>
+
+    <select id="getAcctCheck" resultType="int">
+        select count(*)
+        from user
+        where 1=1
+        and snstype   = #{param1}
+        and useremail = #{param2}
+    </select>
+
+    <select id="getUserList" resultType="com.scg.model.User">
+        select *
+        from user
+    </select>
+    
+    <delete id="deleteFriend" parameterType="int">
+        delete from user_friend where friendid=#{param1}
+    </delete>
+    
+    <insert id="userFriendSave" parameterType="com.scg.model.UserFriend">
+        INSERT INTO user_friend
+        (
+        parentuid,
+        uid,
+        creationdate)
+        VALUES
+        (
+        #{parentuid},
+        #{uid},
+        now()
+        );
+    </insert>
+    
+    <select id="getUserFriendList" parameterType="com.scg.model.UserFriend" resultType="com.scg.model.UserFriend">
+        select uf.*,
+               p.username as parentName,
+               u.username as userName
+        from user_friend uf,
+             user p,user u
+        where  uf.parentuid = p.uid
+        and    uf.uid = u.uid
+        <if test="friendid != 0">
+            and uf.friendid = #{friendid}
+        </if>
+        <if test="parentuid != 0">
+            and uf.parentuid = #{parentuid}
+        </if>
+        <if test="uid != 0">
+            and uf.uid = #{uid}
+        </if>
+    </select>
+
+    <select id="getToken" parameterType="com.scg.model.User" resultType="com.scg.model.User">
+
+        select 'fGEXRKpK6w8:APA91bGc8DrCTzS-hvrKGkHh33hdm0nK7d5zSkFAhwcvVBfPF6-iHhqQZ_EHgGbxYZKyxAJp_QN_-N8Sh0o47jnIZ38l56Pzr_VXbG_8u_6OLXlJFGNlsSZcviWR3jeUS26BJuk1KSG0' as fcmtoken
+    </select>
+
+
+
+</mapper>

@@ -1,0 +1,44 @@
+{
+  "groups": [{
+    "name": "spring.http.multipart",
+    "type": "com.scg.MultipartProperties",
+    "sourceType": "com.scg.MultipartProperties"
+  }],
+  "properties": [
+    {
+      "name": "spring.http.multipart.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Enable support of multi-part uploads.",
+      "sourceType": "com.scg.MultipartProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "spring.http.multipart.file-size-threshold",
+      "type": "java.lang.String",
+      "description": "Threshold after which files will be written to disk. Values can use the suffixed\n \"MB\" or \"KB\" to indicate a Megabyte or Kilobyte size.",
+      "sourceType": "com.scg.MultipartProperties",
+      "defaultValue": "0"
+    },
+    {
+      "name": "spring.http.multipart.location",
+      "type": "java.lang.String",
+      "description": "Intermediate location of uploaded files.",
+      "sourceType": "com.scg.MultipartProperties"
+    },
+    {
+      "name": "spring.http.multipart.max-file-size",
+      "type": "java.lang.String",
+      "description": "Max file size. Values can use the suffixed \"MB\" or \"KB\" to indicate a Megabyte or\n Kilobyte size.",
+      "sourceType": "com.scg.MultipartProperties",
+      "defaultValue": "10Mb"
+    },
+    {
+      "name": "spring.http.multipart.max-request-size",
+      "type": "java.lang.String",
+      "description": "Max request size. Values can use the suffixed \"MB\" or \"KB\" to indicate a Megabyte\n or Kilobyte size.",
+      "sourceType": "com.scg.MultipartProperties",
+      "defaultValue": "10Mb"
+    }
+  ],
+  "hints": []
+}

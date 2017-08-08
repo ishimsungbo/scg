@@ -1,0 +1,30 @@
+package com.scg.event;
+
+import com.scg.persistence.EventMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by sungbo on 2016-11-24.
+ */
+
+@Service
+public class EventService {
+
+    @Autowired
+    EventMapper eventMapper;
+
+    public void saveEvent(EventMain enventMain){
+        eventMapper.saveEvent(enventMain);
+    };
+
+    public void saveEvent(Eventrequest eventrequest){
+        eventMapper.saveEventReq(eventrequest);
+    }
+
+    public List<Eventrequest> getEventReqList(int mainid){
+        return eventMapper.getEventReqList(mainid);
+    };
+}

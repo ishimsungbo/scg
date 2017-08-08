@@ -1,0 +1,26 @@
+package com.scg.webpage;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * Created by sungbo on 2016-12-06.
+ */
+
+@Controller
+@RequestMapping("/mission/")
+public class WmissionController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WmissionController.class);
+
+
+    @RequestMapping("main")
+    public String missionMain(){
+
+        return "/mission/main";
+    }
+
+
+}

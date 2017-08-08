@@ -1,0 +1,140 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>몸싸커이벤트 입력</title>
+
+  <link rel="stylesheet" href="/resources/bootstrap-3.3.2-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="/resources/bootstrap-3.3.2-dist/css/bootstrap-theme.css">
+  <link href="/resources/bootstrap-3.3.2-dist/css/custom1.css" rel="stylesheet">
+  <script src="/resources/jquery-1.11.3.min.js"></script>
+  <script src="/resources/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+
+  <%--datetimepicker--%>
+  <link rel="stylesheet" href="/resources/datetimepicker/css/bootstrap-datetimepicker.min.css">
+  <script type="text/javascript" src="/resources/datetimepicker/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="/resources/datetimepicker/js/locales/bootstrap-datetimepicker.ko.js" charset="UTF-8"></script>
+
+  <style>
+    body { padding-top: 70px; padding-bottom: 70px;}
+  </style>
+
+</head>
+<body>
+
+<div class="container">
+
+  <%--내비게이션헤더--%>
+    <%@ include file="../common/navigation.jsp"%>
+
+  <article>
+
+    <div class="jumbotron">
+      <h1>몸싸커 싸커데이!</h1>
+      <p style="margin-top: 20px">검증된 축구 전문 강사분들에게 누구나 저렴하게 강습을 받으실 수 있습니다</p>
+      <p>몸싸커 회원이면 누구나 신청 할 수 있습니다</p>
+      <p>원하시는 지역에서, 원하시는 기술을, 원하는 날짜에 강습을 받으세요</p>
+      <a data-toggle="tooltip" data-placement="top" title="구글플레이 스토어에서 몸싸커를 다운 받습니다" target="_blank"
+         href="https://play.google.com/store/apps/details?id=com.mom.soccer"><img src="/resources/serverimg/appdown.png" width="250"></a>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <img src="/resources/serverimg/closed.png" alt="...">
+          <div class="caption">
+            <h3>강서지역 강습</h3>
+            <p>대상 : 18세 이상</p>
+            <p>장소 : 대림운동장</p>
+            <p>일자 : 2016년 1월 1일</p>
+            <p>정원 : 20명</p>
+            <p>강사 : 이용석 FC프리즘 감독</p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                20명
+              </div>
+            </div>
+
+            <p><a href="#" class="btn btn-primary" role="button">신청</a> <a href="#" class="btn btn-info" role="button">정보보기</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <img src="/resources/serverimg/closed.png" alt="...">
+          <div class="caption">
+            <h3>강서지역 강습</h3>
+            <p>대상 : 18세 이상</p>
+            <p>장소 : 대림운동장</p>
+            <p>일자 : 2016년 1월 1일</p>
+            <p>정원 : 20명</p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                20명
+              </div>
+            </div>
+
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <img src="/resources/serverimg/closed.png" alt="...">
+          <div class="caption">
+            <h3>강서지역 강습</h3>
+            <p>대상 : 18세 이상</p>
+            <p>장소 : 대림운동장</p>
+            <p>일자 : 2016년 1월 1일</p>
+            <p>정원 : 20명</p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                20명
+              </div>
+            </div>
+
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <img src="/resources/serverimg/closed.png" alt="...">
+          <div class="caption">
+            <h3>강서지역 강습</h3>
+            <p>대상 : 18세 이상</p>
+            <p>장소 : 대림운동장</p>
+            <p>일자 : 2016년 1월 1일</p>
+            <p>정원 : 20명</p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                20명
+              </div>
+            </div>
+
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+    <%@ include file="../common/footer.jsp"%>
+
+</div>
+
+</body>
+</html>

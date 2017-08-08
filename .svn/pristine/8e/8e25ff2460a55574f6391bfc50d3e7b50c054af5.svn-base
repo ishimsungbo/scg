@@ -1,0 +1,16 @@
+#JSP
+spring.mvc.view.prefix=/WEB-INF/jsp/
+spring.mvc.view.suffix=.jsp
+
+#FAVICON
+spring.mvc.favicon.enabled=false
+
+#LOG
+logging.file=log/scg.log
+logging.level.org.springframework=ERROR
+logging.level.org.springframework.web.client=ERROR
+logging.level.com.scg=DEBUG
+logging.level.com.scg.persistence=INFO
+logging.level.jdbc.audit=ERROR
+logging.level.jdbc.resultset=ERROR
+logging.level.jdbc.sqlonly=ERROR

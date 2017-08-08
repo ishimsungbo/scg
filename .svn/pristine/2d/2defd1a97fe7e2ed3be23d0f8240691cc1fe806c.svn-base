@@ -1,0 +1,37 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<html>
+<head>
+  <title>룩업 홈</title>
+  <link rel="stylesheet" href="/resources/stm.css">
+  <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css">
+  <script src="/webjars/jquery/2.2.4/dist/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/3.3.6/dist/js/bootstrap.min.js"></script>
+
+</head>
+<body class="stmbody">
+
+<article>
+
+  <section class="page-subject">
+    <h3>관리홈</h3>
+  </section>
+
+  <section>
+    <a class="btn btn-default" href="/admin/caterory" style="width: 150px">미션카테고리</a>
+    <a class="btn btn-default" href="/admin/type" style="width: 150px">미션타입</a>
+    <a class="btn btn-default" href="/admin/mission" style="width: 150px">시드미션</a>
+    <a class="btn btn-default" href="/admin/gcmexeucte" style="width: 150px">앱 메세지 보내기</a>
+    <a class="btn btn-default" href="/admin/coachapprov" style="width: 150px">코치승인</a>
+    <a class="btn btn-default" href="/admin/reqpointlist" style="width: 150px">포인트신청리스트</a>
+    <a class="btn btn-default" href="/mom/index" style="width: 150px">미션심사요청 대기 리스트</a>
+  </section>
+
+
+</article>
+
+
+</body>
+</html>

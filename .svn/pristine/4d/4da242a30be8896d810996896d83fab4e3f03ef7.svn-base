@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scg.persistence.EventMapper">
+
+    <select id="getEventMain" resultType="com.scg.event.EventMain" parameterType="int">
+        select *
+        from eventmain
+        where mainid = #{param1}
+    </select>
+
+       <insert id="saveEvent" parameterType="com.scg.event.EventMain">
+
+            INSERT INTO eventmain
+            (
+            subject,
+            description,
+            time,
+            location,
+            img,
+            creationdate,
+            endflag,
+            youtube,
+            agefrom,
+            ageto,
+            insname,
+            inscareer,
+            fee,
+            entrance,
+            age,
+            minentrance
+            )
+            VALUES
+            (
+            #{subject},
+            #{description},
+            #{time},
+            #{location},
+            #{img},
+            now(),
+            'N',
+            #{youtube},
+            #{agefrom},
+            #{ageto},
+            #{insname},
+            #{inscareer},
+            #{fee},
+            #{entrance},
+            #{age},
+            #{minentrance}
+            )
+
+       </insert>
+
+    <insert id="saveEventReq" parameterType="com.scg.event.Eventrequest">
+            INSERT INTO eventrequest
+            (
+            name,
+            emailaddr,
+            age,
+            reqrason,
+            phone,
+            creationdate,
+            mainid,
+            bankflag,
+            confirm,
+            password
+            )
+            VALUES
+            (
+            #{name},
+            #{emailaddr},
+            #{age},
+            #{reqrason},
+            #{phone},
+            now(),
+            #{mainid},
+            'N',
+            'N',
+            #{password}
+            );
+    </insert>
+
+    <select id="getEventReqList" parameterType="int" resultType="com.scg.event.Eventrequest">
+        select *
+        from evetnrequest
+        where mainid = #{param1}
+    </select>
+
+    <select id="getEventRequestList" parameterType="int" resultType="com.scg.event.Eventrequest">
+        select *
+        from eventrequest
+        where mainid = #{param1}
+    </select>
+
+    <select id="getList" resultType="com.scg.event.EventMain" parameterType="com.scg.datadto.PagingDTO">
+        select e.*,
+                       (
+               select count(*)
+               from eventrequest er
+               where er.mainid = e.mainid
+               ) as reqcount
+        from eventmain e
+        order by time desc  limit #{pageSize} offset #{startRowNum}
+    </select>
+
+    <select id="getTotalCount" resultType="int" parameterType="com.scg.datadto.PagingDTO">
+      select count(*)
+      from eventmain
+    </select>
+
+    <select id="getEvent" resultType="com.scg.event.EventMain" parameterType="int">
+        select e.*,
+               (
+               select count(*)
+               from eventrequest er
+               where er.mainid = e.mainid
+               ) as reqcount
+        from eventmain e
+        where mainid = #{param1}
+    </select>
+
+
+
+    <select id="getReqData" parameterType="com.scg.event.Eventrequest" resultType="com.scg.event.Eventrequest">
+      select *
+      from eventrequest
+      where password = #{password}
+      and   reqid = #{reqid}
+    </select>
+
+    <select id="deleteReq" parameterType="com.scg.event.Eventrequest">
+        delete from eventrequest
+        where password = #{password}
+        and   reqid = #{reqid}
+    </select>
+
+</mapper>

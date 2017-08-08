@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>fullPage.js One Page Scroll Sites</title>
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<style>
+
+		
+
+	</style>
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="js/jquery.fullPage.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+				menu: '#menu',
+				scrollingSpeed: 1000,
+				afterRender: function(){
+					//playing the video
+					$('video').get(0).play();
+				}
+			});
+		});
+	</script>
+
+</head>
+<body>
+<!-- header -->
+<div id="header" style="position:fixed;">
+    <div id="title" style="position:fixed; width:100%; ">
+      <h1><a href="/"><img src="img/logo.png" alt="SaterdayG" /></a></h1>
+      <ul class="level_list" id="menu">
+        <li data-menuanchor="firstPage"><a href="#firstPage">1</a></li>
+		<li data-menuanchor="secondPage"><a href="#secondPage">2</a></li>
+		<li data-menuanchor="3rdPage"><a href="#3rdPage">3</a></li>
+      </ul>
+	</div>
+</div>
+<!-- //header -->
+
+<div id="fullpage">
+	<div class="section " id="section0">
+			
+		<video autoplay loop muted id="myVideo">
+			<source src="landing.mp4" type="video/mp4">
+		</video>
+
+		<div class="fullpage-bg"></div>
+	</div>
+	<div class="section section1" id="section1">
+		<div class="intro">
+		  <h2>INTRODUCE</h2>
+		  <p>Real Mission Challenge Soccer Game</p>
+		 <ul class="list">
+			<li>
+				<span><img src="img/intro_img01.png" /></span>
+				<h3>재미</h3>
+				<p>다양한 미션을<br />격파하며 레벨 업!<br />오프라인 대회 참가</p>
+			</li>
+			<li>
+				<span><img src="img/intro_img02.png" /></span>
+				<h3>축구기술</h3>
+				<p>미션을 통한<br />축구기본 기술을<br />습득</p>
+			</li>
+			<li>
+				<span><img src="img/intro_img03.png" /></span>
+				<h3>소셜네트워크</h3>
+				<p>자신의 미션 동영상<br />업로드 및<br />친구들과 공유</p>
+			</li>
+		 </ul>
+		</div>
+	</div>
+	<div class="section section2" id="section2">
+		<div class="intro">
+		  <h2>OUR TEAM</h2>
+		  <p>Real Mission Challenge Soccer Game</p>
+		 <ul class="list team">
+			<li>
+				<span><img src="img/team_img01.png" /><strong>심성보</strong></span>
+				<h3>SaturdayG.CEO</h3>
+				<p>축구선수,<br />대기업/공공기관<br />SI 경력12년</p>
+			</li>
+			<li>
+				<span><img src="img/team_img02.png" /><strong>최승민</strong></span>
+				<h3>풀스택개발자.CTO</h3>
+				<p>대기업/공공기관<br />SI 경력12년</p>
+			</li>
+			<li>
+				<span><img src="img/team_img05.png" /><strong>윤원철</strong></span>
+				<h3>축구선수</h3>
+				<p>경희대학교 졸업<br/> 부천SK프로축구단<br/> 내셔널리그<br/> 천안시청 축구단<br/>AFC 2급 라이센스 보유</p>
+			</li>
+			<li>
+				<span><img src="img/team_img06.png" /><strong>유태풍</strong></span>
+				<h3> 축구선수 </h3>
+				<p>서울FC 마르티스<br/> 2002 한일월드컵 홍보대사</p>
+			</li>
+			<li>
+				<span><img src="img/team_img03.png" /><strong>최지숙</strong></span>
+				<h3>디자이너</h3>
+				<p>디자인베테랑</p>
+			</li>
+			<li>
+				<span><img src="img/team_img04.png" /><strong>김남현</strong></span>
+				<h3>풀스택개발자</h3>
+				<p>미다스 손</p>
+			</li>
+		 </ul>
+		</div>
+	</div>
+	
+</div>
+
+<div class="fix_menu chat_pannel" style="z-index:9999;">Copyright (c) 2016 SaterdayG. All Rights Reserved.</div>
+</body>
+</html>

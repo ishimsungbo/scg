@@ -1,0 +1,23 @@
+package com.scg.persistence;
+
+import com.scg.event.EventMain;
+import com.scg.event.Eventrequest;
+
+import java.util.List;
+
+/**
+ * Created by sungbo on 2016-09-19.
+ */
+public interface EventMapper {
+
+    public void saveEvent(EventMain enventMain);
+    public List<EventMain> getEventMainList();
+    public EventMain getEventMain();
+
+
+    public void saveEventReq(Eventrequest eventrequest);
+    public List<Eventrequest> getEventReqList(int mainid);
+    public void deleteReq(int reqid);
+
+
+}

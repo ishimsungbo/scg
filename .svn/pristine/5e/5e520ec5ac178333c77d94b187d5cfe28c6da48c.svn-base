@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scg.persistence.EventMapper">
+
+    <select id="getEventMain" resultType="com.scg.event.EventMain" parameterType="int">
+        select *
+        from eventmain
+        where mainid = #{param1}
+    </select>
+
+       <insert id="saveEvent" parameterType="com.scg.event.EventMain">
+              INSERT INTO eventmain
+              (
+               subject,
+               description,
+               time,
+               location,
+               img,
+               creationdate
+              )
+              VALUES
+              (
+               #{subject},
+               #{description},
+               #{time},
+               #{location},
+               #{img},
+               now()
+              )
+       </insert>
+
+    <insert id="saveEventReq" parameterType="com.scg.event.Eventrequest">
+            INSERT INTO evetnrequest
+            (
+            name,
+            emailaddr,
+            age,
+            reqrason,
+            phone,
+            creationdate,
+            mainid,
+            bankflag,
+            confirm
+            )
+            VALUES
+            (
+            #{name},
+            #{emailaddr},
+            #{age},
+            #{reqrason},
+            #{phone},
+            now(),
+            #{mainid},
+            'N',
+            'N'
+            );
+    </insert>
+
+    <select id="getEventReqList" parameterType="int" resultType="com.scg.event.Eventrequest">
+        select *
+        from evetnrequest
+        where mainid = #{param1}
+    </select>
+
+
+
+</mapper>
